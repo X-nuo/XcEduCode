@@ -1,0 +1,13 @@
+server:
+  port: 31400
+spring:
+  application:
+    name: xc-service-manage-media
+  data:
+    mongodb:
+      database: xc_media
+xc-service-manage-media:
+  mq:
+    queue-media-video-processor: queue_media_video_processor
+    routingkey-media-video: routingkey_media_video
+  upload-location: /Users/xnuo/Desktop/XcEduProject/video/

@@ -34,11 +34,11 @@ public class CookieUtil {
     /**
      * 根据cookie名称读取cookie
      * @param request
-     * @param cookieName1,cookieName2
+     * @param cookieNames
      * @return map<cookieName,cookieValue>
      */
 
-    public static Map<String,String> readCookie(HttpServletRequest request,String ... cookieNames) {
+    public static Map<String,String> readCookie(HttpServletRequest request, String ... cookieNames) {
         Map<String,String> cookieMap = new HashMap<String,String>();
             Cookie[] cookies = request.getCookies();
             if (cookies != null) {
@@ -55,4 +55,5 @@ public class CookieUtil {
         return cookieMap;
 
     }
+
 }

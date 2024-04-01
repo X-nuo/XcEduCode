@@ -2,7 +2,6 @@ package com.xuecheng.framework.domain.order.response;
 
 import com.google.common.collect.ImmutableMap;
 import com.xuecheng.framework.model.response.ResultCode;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.ToString;
 
 
@@ -20,14 +19,14 @@ public enum OrderCode implements ResultCode {
     Pay_NOTFOUNDPAY(false,41012,"支付记录不存在！");
 
     //操作代码
-    @ApiModelProperty(value = "媒资系统操作是否成功", example = "true", required = true)
+    //@ApiModelProperty(value = "媒资系统操作是否成功", example = "true", required = true)
     boolean success;
 
     //操作代码
-    @ApiModelProperty(value = "媒资系统操作代码", example = "22001", required = true)
+    //@ApiModelProperty(value = "媒资系统操作代码", example = "22001", required = true)
     int code;
     //提示信息
-    @ApiModelProperty(value = "媒资系统操作提示", example = "文件在系统已存在！", required = true)
+    //@ApiModelProperty(value = "媒资系统操作提示", example = "文件在系统已存在！", required = true)
     String message;
     private OrderCode(boolean success, int code, String message){
         this.success = success;

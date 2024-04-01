@@ -2,7 +2,6 @@ package com.xuecheng.framework.domain.ucenter.response;
 
 import com.google.common.collect.ImmutableMap;
 import com.xuecheng.framework.model.response.ResultCode;
-import io.swagger.annotations.ApiModelProperty;
 import lombok.ToString;
 
 
@@ -19,14 +18,14 @@ public enum UcenterCode implements ResultCode {
     UCENTER_LOGIN_ERROR(false,23006,"登陆过程出现异常请尝试重新操作！");
 
     //操作代码
-    @ApiModelProperty(value = "操作是否成功", example = "true", required = true)
+    //@ApiModelProperty(value = "操作是否成功", example = "true", required = true)
     boolean success;
 
     //操作代码
-    @ApiModelProperty(value = "操作代码", example = "22001", required = true)
+    //@ApiModelProperty(value = "操作代码", example = "22001", required = true)
     int code;
     //提示信息
-    @ApiModelProperty(value = "操作提示", example = "操作过于频繁！", required = true)
+    //@ApiModelProperty(value = "操作提示", example = "操作过于频繁！", required = true)
     String message;
     private UcenterCode(boolean success, int code, String message){
         this.success = success;

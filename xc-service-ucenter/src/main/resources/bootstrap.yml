@@ -1,0 +1,58 @@
+server:
+  port: 40300
+
+spring:
+  profiles:
+    active: cse # 注册中心类型：cse/nacos
+  application:
+    name: xc-service-ucenter
+
+# CSE 注册配置中心
+---
+spring:
+  config:
+    activate:
+      on-profile: cse
+  cloud:
+    servicecomb:
+      # 微服务的基本信息
+      service:
+        name: ${spring.application.name}                            # 微服务名称，和spring.application.name保持一致。
+        version: ${CAS_INSTANCE_VERSION:0.0.1}                      # 微服务版本号，使用ServiceStage环境变量配置（部署的时候不用手工修改，防止契约注册失败）
+        application: ${CAS_APPLICATION_NAME:xczx-application}       # 应用名称，默认情况下只有应用名称相同的微服务之间才可以相互发现。
+        environment: production                                     # 环境名称，只有环境名称相同的微服务之间才可以相互发现。（development, testing, acceptance, production）
+      # 注册发现相关配置
+      discovery:
+        address: ${PAAS_CSE_SC_ENDPOINT:http://127.0.0.1:30100}     # 注册中心，使用ServiceStage环境变量配置（部署的时候不用手工修改地址）
+        healthCheckInterval: 10                                     # 微服务向CSE发送心跳间隔时间，单位秒
+        pollInterval: 15000                                         # 拉取实例的轮询时间，单位毫秒
+        waitTimeForShutDownInMillis: 15000                          # 优雅停机设置。优雅停机后，先从注册中心注销自己。这个时间表示注销自己后等待的时间，这个时间后才退出。
+      config:
+        serverAddr: ${PAAS_CSE_CC_ENDPOINT:http://127.0.0.1:30110}  # 配置中心地址，使用ServiceStage环境变量配置（部署的时候不用手工修改地址）
+        serverType: kie
+        # 自定义配置
+        kie:
+          customLabel: ${spring.application.name}
+          customLabelValue: ${INSTANCE_TAG:default}
+        fileSource: governance.yaml,application.yaml                # 自定义配置，使用文本的key/value配置项作为yaml格式配置
+
+# Nacos 注册配置中心
+---
+spring:
+  config:
+    activate:
+      on-profile: nacos
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        server-addr: http://127.0.0.1:8848
+        service: ${spring.application.name}
+      config:
+        enabled: true
+        server-addr: http://127.0.0.1:8848
+        file-extension: yaml
+        shared-configs[0]:
+          data-id: provider.yaml
+          group: DEFAULT_GROUP
+          refresh: true
