@@ -5,7 +5,7 @@ spring:
     name: xc-service-search
 xuecheng:
   elasticsearch:
-    hostlist: 127.0.0.1:9200    #多个结点中间用逗号分隔
+    hostlist: ${ES_HOSTLIST:127.0.0.1:9200}    #多个结点中间用逗号分隔
     course:
       index: xc_course
       type: doc
