@@ -7,6 +7,7 @@ mvn -f ../xc-framework-parent/pom.xml install
 mvn -f ../xc-framework-model/pom.xml install
 mvn -f ../xc-framework-utils/pom.xml install
 mvn -f ../xc-framework-common/pom.xml install
+mvn -f ../xc-service-api/pom.xml install
 # maven插件构建docker镜像
 mvn -f pom_docker.xml clean package -DskipTests docker:build
 # 修改镜像名称(用于华为云平台镜像上传)
