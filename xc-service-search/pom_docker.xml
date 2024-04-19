@@ -54,7 +54,7 @@
                 <version>1.0.0</version>
                 <configuration>
                     <imageName>${project.artifactId}-${project.version}</imageName>
-                    <dockerDirectory>${project.basedir} /src/main/resources</dockerDirectory>
+                    <dockerDirectory>${project.basedir}/src/main/resources</dockerDirectory>
                     <imageTags>
                         <imageTag>${project.version}</imageTag>
                     </imageTags>
